@@ -1,0 +1,210 @@
+﻿@model Zong_Admin_Panel.Models.UserModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Login</title>
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <link rel="icon" type="image/png" sizes="96x96" href="~/Content/default_theme/assets/img/favicon.png">
+
+    <!-- Fonts and icons -->
+    <script src="~/Content/assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+        WebFont.load({
+            google: { "families": ["Lato:300,400,700,900"] },
+            custom: { "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['Content/assets/css/fonts.min.css'] },
+            active: function () {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/assets/css/atlantis.css">
+</head>
+@{
+    var msg = ViewBag.message;
+    var form = ViewBag.form;
+}
+<body class="login">
+
+    <div class="wrapper wrapper-login wrapper-login-full p-0">
+        <div class="login-aside w-50 d-flex flexcolumn align-items-center justify-content-center text-center" style="background-image: url(/Content/default_theme/assets/img/image-cover3.jpg)">
+            @*<img src="~/Content/default_theme/assets/img/login-back.jpg" />*@
+            <div class="row">
+                <div class="container">
+                    <div class="col-12">
+                        <h1 class="title fw-bold text-white mb-3">Join Our Community</h1>
+                    </div>
+                    <div class="col-12">
+                        @*<p class="subtitle text-white op-7">Ayo bergabung dengan komunitas kami untuk masa depan yang baik</p>*@
+                        <img class="logo-image" src="~/Content/default_theme/assets/img/its-logo.gif" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="login-aside w-50 d-flex align-items-center justify-content-center bg-white">
+
+            <div class="container container-login container-transparent animated fadeIn">
+                @if (form == "login")
+                {
+                    <h3 class="text-center">Sign In</h3>
+                
+                    <div class="login-form">
+                        <form class="form-auth-small" method="post">
+                            @Html.AntiForgeryToken()
+                             <div class="form-group">
+                                <div class="text-danger text-center">@ViewBag.Message</div>
+                                <label for="username" class="placeholder"><b>Username</b></label>
+                                <input id="username" name="username" type="text" class="form-control" required minlength="2">
+                                
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="placeholder"><b>Password</b></label>
+
+                                <div class="position-relative">
+                                    <input id="password" name="password" type="password" class="form-control" required minlength="2">
+                                    <div class="show-password">
+                                        <i class="icon-eye"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-action-d-flex mb-3">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="rememberme" name="rememberme">
+                                    <label class="custom-control-label m-0" for="rememberme">Remember Me</label>
+                                    <br />
+                                    <a href="#" id="show-signup" style="margin-right:5px" class="link float-right">Forgot Password?</a>
+                                </div>
+
+                                <button type="submit" class="btn btn-secondary col-md-5 float-right mt-3 mt-sm-0 fw-bold" onclick="Timer()">Sign In</button>
+
+                               
+                            </div>
+                           
+                        </form>
+                        <div class="login-account">
+                            @*<span class="msg">Don't have an account yet ?</span>
+                    <a href="#" id="show-signup" class="link">Sign Up</a>*@
+                        </div>
+                    </div>
+                }
+
+                else if (form == "ResetPassword")
+                {
+                    <div class="content">
+                        <div class="header">
+                            
+                            <p class="lead text-center">Reset password</p>
+                        </div>
+                        <p class="text-center margin-bottom-30">@msg</p>
+                        @using (Html.BeginForm("ResetPassword", "Account", FormMethod.Post,
+                            new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-group">
+                                @Html.Hidden("username", @Session["ChangeUserName"].ToString())
+                                @Html.LabelFor(model => model.password, "Password")
+                                @Html.PasswordFor(model => model.password, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.password)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.confirmpassword, "Confirm Password")
+                                @Html.PasswordFor(model => model.confirmpassword, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.confirmpassword)
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Reset</button>
+                            <div class="bottom">
+                                <span class="helper-text">Know your password? <a href="@Url.Action("Index", "Account")"> Login </a></span>
+                           
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="header">
+                        @*<div class="logo text-center"><img src="~/Content/default_theme/assets/img/logo.png" alt="DiffDash"></div>*@
+                    </div>
+                    <br />
+                    <p class="text-center margin-bottom-30" style="color:green">@ViewBag.message</p>
+                    <div class="bottom">
+                        <input type="button" class="btn btn-primary btn-lg btn-block" value="Goto Login" onclick="location.href='@Url.Action("Index", "Account")'" />
+                    </div>
+                }
+            </div>
+
+
+            <div class="container container-signup container-transparent animated fadeIn">
+                <h3 class="text-center">Recover password</h3>
+
+                <div id="wrapper">
+                    <div class="vertical-align-wrap">
+                        <div class="vertical-align-middle">
+
+                            <div class="auth-box forgot-password">
+                                <div class="content">
+                                    @{
+                                        
+                                            <div class="header">
+                                                <p class="lead"></p>
+                                            </div>
+                                            <p class="text-center margin-bottom-30">Please enter your email address below to receive instructions for resetting password.</p>
+                                            <br />
+                                            using (Html.BeginForm("ForgetPassword", "Account", FormMethod.Post,
+                                                  new { enctype = "multipart/form-data" }))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <div class="form-group">
+                                                    <label for="signup-password" class="control-label sr-only">Password</label>
+                                                    <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                                                </div>
+                                                <br />
+                                                <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+                                                <br />
+                                                <div class="bottom">
+                                                    <span class="helper-text">Know your password? <a href='@Url.Action("Index", "Account")'>Login</a></span>
+                                                </div>
+
+                                            }
+                                        
+
+
+                                    }
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/assets/js/core/jquery.3.2.1.min.js"></script>
+    <script src="~/Content/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="~/Content/assets/js/core/popper.min.js"></script>
+    <script src="~/Content/assets/js/core/bootstrap.min.js"></script>
+    <script src="~/Content/assets/js/atlantis.min.js"></script>
+</body>
+</html>
+
+<script>
+    var timerLength = 90;
+    function Timer() {
+        debugger
+        localStorage.setItem('myTime', ((new Date()).getTime() + timerLength * 1000));
+        if (timeoutID != undefined) window.clearTimeout(timeoutID);
+        Update();
+    }
+    $(document).ready(function () {
+        localStorage.removeItem("Permissions");
+
+    })
+</script>

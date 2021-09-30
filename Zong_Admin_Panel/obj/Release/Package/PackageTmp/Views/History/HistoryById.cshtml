@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "HistoryById";
+}
+
+
+<div class="header pb-6 d-flex align-items-center">
+    <!-- Header container -->
+    <div class="container-fluid d-flex align-items-center">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <h1 class="page-heading">Mask History</h1>
+
+                @*<p class="page-sub-heading mt-0 mb-5">September 15 - September 30</p>*@
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--6">
+    @*<div class="row">
+        <div class="col">*@
+    <div class="card">
+        <!-- Light table -->
+        <div class="table-responsive">
+            <table class="table tblmanage align-items-center table-flush text-center  responsive2 display ">
+                <thead class="thead-light">
+                    <tr>
+
+                        <th scope="col">USER NAME</th>
+                        <th scope="col">Activity</th>
+                        <th scope="col">DateTime</th>
+
+                    </tr>
+
+                </thead>
+                <tbody class="list">
+                </tbody>
+            </table>
+        </div>
+        <!-- Card footer -->
+        @*</div>
+            </div>*@
+    </div>
+    <!-- Footer -->
+    <footer class="footer pt-0">
+        <div class="row align-items-center justify-content-lg-between">
+            <div class="col-lg-6">
+                <div class="copyright text-center  text-lg-left  text-muted">
+                    &copy; 2021 <a href="https://https://www.zong.com.pk/" class="font-weight-bold ml-1" target="_blank">CMPAK</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+            </div>
+        </div>
+    </footer>
+</div>
+
+
+@section scripts
+{
+    <script src="~/Scripts/ProjectScript/HistoryScripts.js"></script>
+    <script src="~/Scripts/ProjectScript/CrudScript.js"></script>
+
+    <script>
+        let Permissions = localStorage.getItem("Permissions");
+        var json = $.parseJSON(Permissions);
+
+
+    </script>

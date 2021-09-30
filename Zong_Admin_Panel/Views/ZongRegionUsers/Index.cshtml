@@ -1,0 +1,178 @@
+﻿<style>
+    div#mainTable_wrapper .row {
+        width: 100% !important;
+    }
+    select {
+        border-radius: 0px !important;
+    }
+    button#add {
+        font-size: .875rem;
+        position: relative;
+        transition: all .15s ease;
+        letter-spacing: .025em;
+        text-transform: none;
+        will-change: transform;
+        float: right;
+    }
+    .page-inner {
+        margin-top: -4%;
+    }
+</style>
+
+<div class="page-inner">
+    <h1 class="page-heading">Zong Region User</h1>
+    <div class="page-header" style="display:none">
+        
+        <ul class="breadcrumbs">
+            <li class="nav-home">
+                <a href="Menu">
+                    <i class="flaticon-home"></i>
+                </a>
+            </li>
+
+
+        </ul>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                      
+                        <button id='add' type='button' class='btn btn-primary btn-round ml-auto create'><i class='fas fa-plus'></i> Create</button>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table tblmanage table-striped table-bordered table-hover" id="mainTable" role="grid" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th hidden>Id</th>
+                                    <th>Username</th>
+                                    <th>Region</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fadeIn" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title">
+                    <span class="fw-mediumbold">
+                        New
+                    </span>
+                    <span class="fw-light">
+                        Zong User
+                    </span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="form">
+                    <div class="row">
+                        @Html.Hidden("Id")
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label class="form-control-label " for="input-username">Users</label>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.DropDownList("Users", (IEnumerable<SelectListItem>)ViewBag.users, "Select User", new { @class = "form-control selectBox" })
+                                <label class="form-control-label " id="names" style="display:none;color:red;">Requierd Field</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label class="form-control-label " for="input-username">Regions</label>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.DropDownList("ZongUsers", (IEnumerable<SelectListItem>)ViewBag.zongusers, "Select User", new { @class = "form-control" })
+                                <label class="form-control-label " id="zongus" style="display:none;color:red;">Requierd Field</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                </div>
+            <div class="modal-footer border-0">
+                    <button type="submit" id="btnSubmit" class="btn btn-primary">Add</button>
+                    <button type="submit" id="btnUpdate" class="btn btn-primary" style="display:none">Update</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@section scripts
+{
+    <script src="~/Scripts/ProjectScript/CrudScript.js"></script>
+    <script src="~/Scripts/ProjectScript/ZongRegionUsersScript.js"></script>
+    <script>
+        $(document).ready(function () {
+            ZongRUScripts.RenderDataTable();
+        });
+
+        $("#btnSubmit").click(function () {
+
+            ZongRUScripts.ZongRUSave();
+
+        });
+
+        $("#btnUpdate").click(function () {
+            ZongRUScripts.ZongRUUpdate();
+        });
+
+        $(document).on('click', '.edit', function () {
+            var data = $('.tblmanage').DataTable().row($(this).closest('tr')).data();
+            $('#ModalTitle').text("Update Users");
+            removevalidationmesssage();
+            ZongRUScripts.FillModal(data);
+
+        });
+
+        $(document).on('click', '.delete', function () {
+            var data = $('.tblmanage').DataTable().row($(this).closest('tr')).data();
+            ZongRUScripts.ZongRUDelete(data);
+        });
+
+        $('#add').click(function () {
+            debugger
+            $('#addRowModal').modal("show");
+            $("#form").trigger('reset');
+            $('#ModalTitle').text("Add Users");
+            $('.fw-mediumbold').text('New');
+            $('#btnUpdate').css('display', 'none');
+            $('#btnSubmit').css('display', 'block');
+            $('#Id').val('');
+            removevalidationmesssage();
+
+        });
+
+        function removevalidationmesssage() {
+            $('#names').css('display', 'none');
+            $('#Users').css('border-color', 'lightgrey');
+            $('#zongus').css('display', 'none');
+            $('#ZongUsers').css('border-color', 'lightgrey');
+        }
+    </script>
+}

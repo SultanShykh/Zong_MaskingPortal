@@ -1,0 +1,450 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+
+@*<div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        Senders
+                        <button id='add' type='button' class='btn btn-info btn-sm create'><i class='fas fa-plus'></i> Add User</button>
+                        <button id='download' type='button' class='btn btn-info btn-sm create'><i class='fas fa-plus'></i>Download ZipFile</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+<div class="header pb-6 d-flex align-items-center">
+    <!-- Header container -->
+    <div class="container-fluid d-flex align-items-center">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <h1 class="page-heading">Senders</h1>
+                <button id='add' type='button' class='btn btn-info btn-sm create'><i class='fas fa-plus'></i> Add User</button>
+                @*<p class="page-sub-heading mt-0 mb-5">September 15 - September 30</p>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--6">
+    @*<div class="row">
+        <div class="col">*@
+    <div class="card">
+        <!-- Light table -->
+        <div class="table-responsive">
+            <table class="table align-items-center table-flush text-center tblmanage">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col" hidden>#</th>
+                        <th scope="col">ACCOUNT NUMBER</th>
+                        <th scope="col">USER NAME</th>
+                        <th scope="col">SENDER ID</th>
+                        <th scope="col">NTN/FTN</th>
+                        <th scope="col">NTN/FTN STATUS</th>
+                        <th scope="col" colspan="5">OPERATIONS</th>
+                        <th scope="col">STATUS</th>
+                    </tr>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col">Request</th>
+                        <th scope="col">Zong</th>
+                        <th scope="col">Jazz</th>
+                        <th scope="col">Telenor</th>
+                        <th scope="col">Ufone</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody class="list">
+                    @*<tr>
+                        <td hidden>1</td>
+                        <td>9231xxxxxxxx</td>
+                        <td>North</td>
+                        <td>ABCD</td>
+                        <td>1234567</td>
+                        <td class="verified">Verified</td>
+                        <td>ON Net</td>
+                        <td>Added</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td><span class="badge badge-pill badge-approved">Approved</span></td>
+                    </tr>
+                    <tr>
+                        <td hidden>2</td>
+                        <td>9231xxxxxxxx</td>
+                        <td>Central</td>
+                        <td>EFTYH</td>
+                        <td>1234567</td>
+                        <td class="non-verified">Non Verified</td>
+                        <td>All Net</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td><span class="badge badge-pill badge-rejected">Reject</span></td>
+                    </tr>
+                    <tr>
+                        <td hidden>3</td>
+                        <td>9231xxxxxxxx</td>
+                        <td>South</td>
+                        <td>ABCD</td>
+                        <td>1234567</td>
+                        <td class="verified">Verified</td>
+                        <td>All Net</td>
+                        <td>Added</td>
+                        <td>Pending</td>
+                        <td>Pending</td>
+                        <td>Pending</td>
+                        <td><span class="badge badge-pill badge-pending">Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td hidden>4</td>
+                        <td>9231xxxxxxxx</td>
+                        <td>East</td>
+                        <td>ABCD</td>
+                        <td>1234567</td>
+                        <td class="non-verified">Non Verified</td>
+                        <td>All Net</td>
+                        <td>Added</td>
+                        <td>Added</td>
+                        <td>Added</td>
+                        <td>Added</td>
+                        <td><span class="badge badge-pill badge-approved">Approved</span></td>
+                    </tr>*@
+                </tbody>
+            </table>
+        </div>
+        <!-- Card footer -->
+        <div class="card-footer py-4">
+            <nav aria-label="...">
+                <ul class="pagination justify-content-end mb-0">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">
+                            <i class="fas fa-angle-left"></i>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item active">
+                        <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">
+                            <i class="fas fa-angle-right"></i>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        @*</div>
+            </div>*@
+    </div>
+    <!-- Footer -->
+    <footer class="footer pt-0">
+        <div class="row align-items-center justify-content-lg-between">
+            <div class="col-lg-6">
+                <div class="copyright text-center  text-lg-left  text-muted">
+                    &copy; 2021 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Zong</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- ADD MODAL -->
+<div class="modal fadeIn" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title">
+                    New Sender
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="form">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label class="form-control-label " for="input-username">Account Number</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <input type="text" id="input-username" name="AccountNumber" class="form-control" placeholder="Type:">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-username">Sender ID</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <input type="text" id="input-username" name="Masking" class="form-control" placeholder="Type:">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-username">NTN/FTN</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <input type="text" id="input-username" name="NTN_FTN" class="form-control" placeholder="Type:">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-username">NTN/FTN Status</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="customRadioInline1" name="NTN_FTN_Status" value="true" class="custom-control-input">
+                                    <label class="custom-control-label" for="customRadioInline1">Verified</label>
+                                </div>
+                                <span> | &nbsp;</span>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="customRadioInline2" name="NTN_FTN_Status" value="false" class="custom-control-input">
+                                    <label class="custom-control-label" for="customRadioInline2">Non Verified</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-username">Operators</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="customRadioInline3" name="Operators" value="1" class="custom-control-input">
+                                    <label class="custom-control-label" for="customRadioInline3">On Net</label>
+                                </div>
+                                <span> | &nbsp;</span>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="customRadioInline4" name="Operators" value="2" class="custom-control-input">
+                                    <label class="custom-control-label" for="customRadioInline4">All Net</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-username">Priority</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="customRadioInline5" name="Priority" value="Normal" class="custom-control-input">
+                                    <label class="custom-control-label" for="customRadioInline5">Normal</label>
+                                </div>
+                                <span> | &nbsp;</span>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="customRadioInline6" name="Priority" value="Urgent" class="custom-control-input">
+                                    <label class="custom-control-label" for="customRadioInline6">Urgent</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-username">Attahment(s)</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="Attachments" id="customFileLang" lang="en" multiple="multiple">
+                                    <label class="custom-file-label" for="customFileLang">Select file</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-username">Comments</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <textarea rows="4" class="form-control" name="Comments" placeholder=""></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group" style="text-align: center;">
+                                <button type="submit" class="btn btn-secondary btn-lg sender-button">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END ADD MODAL -->
+
+
+
+@section scripts
+{
+    <script src="~/Scripts/ProjectScript/SenderScript.js"></script>
+  
+    <script src="~/Scripts/ProjectScript/CrudScript.js"></script>
+    <script>
+        var initiator = '';
+        $("form#form").submit(function (e) {
+            debugger
+            var formData = new FormData(this);
+            e.preventDefault();
+            //if (SenderScript.Validate()) {
+
+                if ($('#Id').val() > 0) {
+
+                    SenderScript.UpdateUser(formData);
+                }
+                else {
+                    SenderScript.SaveUser(formData);
+                }
+           // }
+        });
+
+
+        $(document).ready(function () {
+            SenderScript.RenderDataTable();
+        });
+
+        $('#btnSubmit').click(function () {
+            debugger
+            if (SenderScript.Validate()) {
+
+                initiator = this.name
+            }
+        });
+
+
+
+        $(document).on('click', '.edit', function () {
+            debugger
+            var data = $('.tblmanage').DataTable().row($(this).closest('tr')).data();
+            $('#ModalTitle').text("Update Users");
+            cancel();
+            SenderScript.FillModal(data);
+
+        });
+
+
+
+        $('#btnUpdate').click(function () {
+            debugger
+            initiator = this.name
+        });
+
+        $(document).on('click', '.delete', function () {
+            var data = $('.tblmanage').DataTable().row($(this).closest('tr')).data();
+            SenderScript.DeleteUser(data);
+        });
+
+        $('#add').click(function () {
+            debugger
+            $('#addRowModal').modal("show");
+            $("#form").trigger('reset');
+            $('#ModalTitle').text("Add Users");
+            $('.fw-mediumbold').text('New');
+            $('#btnUpdate').css('display', 'none');
+            $('#btnSubmit').css('display', 'block');
+            $('#attached').text('');
+            $('#Id').val('');
+            $("#textboxDiv label ").remove();
+            removevalidationmesssage();
+
+        });
+        function cancel() {
+            $('#cities').css('display', 'none');
+            $('#CityName').css('border-color', 'lightgrey');
+            $("#textboxDiv label ").remove();
+            removevalidationmesssage();
+
+        }
+
+        //$(document).on("click", "#download", function () {
+        //    debugger
+        //    // var data=  $(this).next().find("input[type='checkbox']").prop('checked', this.checked);
+        //    //$('.tblmanage input.Checkbox').each(function () {
+
+        //    $this = $(this);
+        //    var parentTr = $(this).parents('tr');
+        //    $this.is(':checked');
+        //    var idArray = [];
+        //    var data = $(".tblmanage").find('input[type="checkbox"]:checked').each(function () {
+        //        var item = $(this);
+        //        var data = idArray.push(item.attr());
+
+        //        console.log(data);
+        //        //        });
+        //        //    SenderScript.DownloadUsers(data);
+
+
+        //        //    });
+        //    });
+
+        //});
+
+
+        function removevalidationmesssage() {
+            $('#mask').css('display', 'none');
+            $('#Masking').css('border-color', 'lightgrey');
+            $('#cnic').css('display', 'none');
+            $('#Cnic').css('border-color', 'lightgrey');
+            $('#company').css('display', 'none');
+            $('#CompanyName').css('border-color', 'lightgrey');
+            $('#cnic').css('display', 'none');
+            $('#Cnic').css('border-color', 'lightgrey');
+            $('#ntn').css('display', 'none');
+            $('#NTN').css('border-color', 'lightgrey');
+            $('#contact').css('display', 'none');
+            $('#Contact').css('border-color', 'lightgrey');
+        }
+
+    </script>
+}
+
+

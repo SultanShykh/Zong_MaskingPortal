@@ -1,0 +1,187 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+
+<style>
+    #chart {
+        height: 440px;
+    }
+
+    h1 {
+        color: white
+    }
+
+
+    h4 {
+        color:white
+    }
+
+</style>
+@{
+    var data = ViewBag.Message;
+   
+}
+ 
+<div class="row">
+    
+    
+    
+    <div class="col-md-3 col-sm-6">
+        <div class="card bg-info">
+            <div class="stats bg-gradient-info">
+
+                <div class="card-body ">
+                    <div class="widget widget-stats d-flex justify-content-between">
+                        <div class="text-wrapper">
+                            <h4>Today</h4>
+                            <h1>
+                                @if (data.Count != 0)
+                                {@data[0].Today}
+                            else
+                            {
+                                <h1>0</h1>
+                            }
+                            </h1>
+                        </div>
+                        <div class="stats-icon"><i class="fa fa-desktop fa-3x text-white"></i></div>
+                    </div>
+                </div>
+             </div>
+            </div>
+        </div>
+       
+    
+    
+    <div class="col-md-3 col-sm-6">
+        <div class="card bg-info">
+            <div class="stats bg-gradient-success">
+         <div class="card-body ">
+                    <div class="widget widget-stats d-flex justify-content-between">
+                        <div class="text-wrapper">
+                            <h4>Weekly</h4>
+                            <h1>
+                                @if (data.Count != 0)
+                                {@data[0].Week}
+                            else
+                            {
+                                <h1>0</h1>
+                            }
+                            </h1>
+                        </div>
+                        <div class="stats-icon"><i class="fa fa-cube fa-3x text-white"></i></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+    
+    <div class="col-md-3 col-sm-6">
+    <div class="card bg-danger">
+        <div class="stats bg-gradient-red">
+            <div class="card-body ">
+                <div class="widget widget-stats d-flex justify-content-between">
+                    <div class="text-wrapper">
+                        <h4>Monthly</h4>
+                        <h1>
+                            @if (data.Count != 0)
+                            {@data[0].Month}
+                        else
+                        {
+                            <h1>0</h1>
+                        }
+                        </h1>
+                    </div>
+                    <div class="stats-icon"><i class="fa fa-cube fa-3x text-white"></i></div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="card bg-light">
+                    <div class="stats bg-gradient-gray">
+                        <div class="card-body ">
+                            <div class="widget widget-stats d-flex justify-content-between">
+                                <div class="text-wrapper">
+                                    <h4>Total</h4>
+                                    <h1>
+                                        @if (data.Count == 2)
+                                        {
+                                            @data[1].Total
+                                        }
+                                        else
+                                        {
+                                            <h1>0</h1>
+                                        }
+                                    </h1>
+                                    </div>
+                                    <div class="stats-icon"><i class="fa fa-server fa-3x text-white"></i></div>
+                                </div>
+                            </div>
+                    </div>
+                    </div>
+                </div>
+
+
+                <div class="container-fluid m-5">
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div id="chart" style="width:200px"></div>
+                                        </div>
+                                     </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+                   
+
+
+                </div>
+
+             
+             
+
+
+                <div id="myDiv" datavalue="@Request.RequestContext.HttpContext.Session["PermissionCookies"]"></div>
+
+
+
+                @section scripts{
+                    <script type="text/javascript" src="https://cdn3.devexpress.com/jslib/21.1.4/js/dx.all.js"></script>
+                    <script src="~/Scripts/ProjectScript/GroupScript.js"></script>
+
+                    <script src="~/Scripts/ProjectScript/CrudScript.js"></script>
+                    <script>
+                        $(document).ready(function () {
+                            var value = $("#myDiv").data('value');
+
+                            localStorage.setItem("Permissions", JSON.stringify(value));
+
+                            debugger
+
+                            $(function () {
+                                $("#chart").dxChart({
+                                    dataSource:@Html.Raw(Json.Encode(data)),
+                                    series: {
+                                        argumentField: "CreatedDateTime",
+                                        valueField: "Total",
+                                        name: "My oranges",
+                                        type: "bar",
+                                        color: '#ffaa66'
+                                    },
+                                });
+                            });
+
+                         })
+                    </script>
+                }

@@ -1,0 +1,5 @@
+*.manifest
+*.suo
+.vs/
+ITSZongApi/obj/
+ITSZongApi/bin/

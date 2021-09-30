@@ -1,0 +1,418 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+ 
+    table#mainTable {
+    width: 100% !important;
+}
+    table#mainTable tbody td:last-child select {
+            width: 190px !important;
+        }
+
+    div#mainTable_paginate {
+        float: right !important;
+        position: absolute;
+        right: 20px;
+        bottom: 10px;
+    }
+
+</style>
+<div class="page-inner">
+    <div class="page-header" style="display:none">
+        <h4 class="page-title">User</h4>
+        <ul class="breadcrumbs">
+            <li class="nav-home">
+                <a href="Users">
+                    <i class="flaticon-home"></i>
+                </a>
+            </li>
+           
+
+        </ul>
+    </div>
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <h4 class="card-title">Add User</h4>
+                        <a href="#"  class="btn btn-primary btn-round ml-auto create" id="createUser">
+                            <i class="fa fa-plus"></i>
+                            Create User
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!-- Modal -->
+                    <div class="modal fadeIn" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header border-0">
+                                    <h5 class="modal-title">
+                                        <span class="fw-mediumbold">
+                                            New
+                                        </span>
+                                        <span class="fw-light">
+                                            User
+                                        </span>
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="form">
+                                        <div class="row">
+                                            <div class="col-md-6 pr-0">
+                                                @Html.Hidden("userId")
+                                                <div class="form-group form-group-default">
+                                                    <label>First Name</label>
+                                                    <input id="firstName" name="FirstName" type="text" class="form-control" placeholder="First Name" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group form-group-default">
+                                                    <label>Last Name</label>
+                                                    <input id="LastName" name="LastName" type="text" class="form-control" placeholder="Last Name">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group form-group-default">
+                                                    <label>Email</label>
+                                                    <input id="email" name="email" type="text" class="form-control" placeholder="Email" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group form-group-default">
+                                                    <label>User Name</label>
+                                                    <input id="username" name="username" type="text" class="form-control" placeholder="User Name" readonly required>
+                                                </div>
+                                                <span id="msg" style="display: none;color: red !important;font-size: 10px;">Username Already Exist Please Try Another</span>
+                                            </div>
+                                        </div>
+                                        <div class="row password">
+
+                                            <div class="col-md-6">
+                                                <div class="form-group form-group-default">
+                                                    <label>Password</label>
+                                                    <input id="password" name="password" type="password" class="form-control" placeholder="Password" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group form-group-default">
+                                                    <label>Confirm Password</label>
+                                                    <input id="confirmPassword" name="confirmPassword" type="password" class="form-control" placeholder="confirmPassword" required>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="col-md-6 pr-0" hidden>
+                                                <div class="form-group form-group-default">
+                                                    <label>User Type</label>
+                                                    <select name="userType" id="userType" class="form-control">
+                                                        <option value="1">Super Admin</option>
+                                                        <option value="2">Admin</option>
+                                                        <option value="3">Agent</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group form-group-default">
+                                                    <label>User Group</label>
+                                                    @Html.DropDownList("userGroup", (IEnumerable<SelectListItem>)ViewBag.userGroup, "Select Group", new
+                                                    {
+                                                        @class = "form-control",
+                                                        required = "Select Group"
+                                                    })
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="modal-footer border-0">
+                                            <button type="submit" id="btnSubmit" class="btn btn-primary">Add</button>
+                                            <button type="submit" id="btnUpdate" class="btn btn-primary" style="display:none">Update</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table id="mainTable" class="display table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>User Name</th>
+                                    <th>Email</th>
+                                    <th>User Group</th>
+                                    <th>User Type</th>
+                                    <th style="width: 10%">Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/ProjectScript/CrudScript.js"></script>
+<script>
+
+    $(document).ready(function () {
+       // getSupplierList
+        ClearFields();
+        $('#msg').css('display', 'none');
+        RenderDataTable();
+
+    });
+
+    $(document).on("focusout", "#username", function () {
+        var username = $(this).val();
+        if (username != null && username != '') {
+
+            CrudScript.makeAjaxRequest('Post', '/Users/CheckUsername', { username: username }).then(function (data) {
+
+                if (data == false) {
+                    
+                    $('#msg').css('display', 'block');
+                    $('#username').attr('readonly', false);
+
+                }
+                else {
+                    $('#username').attr('readonly', true);
+                    $('#msg').css('display', 'none');
+                }
+            })
+        }
+
+    });
+
+    function RenderDataTable() {
+        var mainTable = $('#mainTable').DataTable({
+            dom: 'lrtip',
+            "processing": true,
+            "serverSide": true,
+            "paging": true,
+            "pagingType": "full_numbers",
+            "lengthMenu": [[25, 50, 100], [25, 50, 100]],
+            "ordering": false,
+            "language": {
+                "processing": "<image src='/Content/default_theme/assets/img/loading.gif' />"
+            },
+            "ajax": {
+                "type": "Post",
+                "url": '/Users/RenderList',
+                "contentType": 'application/json; charset=utf-8',
+                'data': function (data) { return data = JSON.stringify(data); }
+            },
+            "columns": [
+                { "data": "Id" },
+                { "data": "FirstName" },
+                { "data": "LastName" },
+                { "data": "username" },
+                { "data": "email" },
+
+                {
+                    "render": function (data, type, full, meta) {
+                        var div = '<div id=action></div>';
+                        var button = '<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger delete" data-original-title="Remove"><i class= "fas fa-times" ></i></button>'
+                        var $select = $('<select/>', { 'class': 'ctrl-status form-control' });
+                        $.each(full.GroupMasters, function (Value, Text) {
+                            var $opt = $('<option/>', { 'value': Text.id, 'text': Text.Name });
+                            if (Text.Name === full.GroupName) {
+                                $opt.attr("selected", "selected");
+                            }
+                            $select.append($opt);
+                        });
+
+                        return $select.prop("outerHTML") /*+ '<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger delete" data-original-title="Remove"><i class= "fa fa-times" ></i></button>'*/;
+                    }
+                },
+                { "data": "userType" },
+                {
+                    "mData": null,
+                    "bSortable": false,
+                    "mRender": function (data, type, full) {
+                        return '<button type="button" class="btn btn-primary edit mr-2" id="' + data.Id + '" value="Edit"><i class="fas fa-edit"></i></button><button type="button" class="btn btn-danger delete" id="' + data.Id + '" value="Delete"><i class="fas fa-trash"></i></button>'
+
+                    }
+                }
+            ],
+            "columnDefs": [
+
+                {
+                    "targets": "_all",
+                    "className": "dt-center",
+                    "orderable": true
+                },
+                {
+                      "targets": [0,6],
+                      "visible": false,
+                    "searchable": false,
+                    className: "hide_column"
+                },
+
+
+            ]
+        });
+    }
+
+
+     $("form#form").submit(function (e) {
+        e.preventDefault();
+            var formData = new FormData(this);
+
+            $.ajax({
+                url: '/Users/CreateUser',
+                type: 'POST',
+                data: formData,
+                success: function (response) {
+                    debugger
+                    if (response == "Password And Confirm Password Are Different") {
+                        ShowDivError("Password And Confirm Password Are Different");
+                    }
+                    else if (response.message == "Username Already Taken")
+                    {
+                        ShowDivError(response.message);
+                    }
+                    else {
+                        $('#addRowModal').modal("hide");
+                        ShowDivSuccess("User Created Successfully");
+                        ClearFields();
+                        var mainTable = $('#mainTable').DataTable();
+                         mainTable.destroy();
+                        RenderDataTable();
+                    }
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+
+
+    });
+
+    $(document).on("focusout", "#email", function () {
+
+        var re =/\S+@@\S+\.\S+/;
+        if (re.test($(this).val()))
+        {
+            var username = $(this).val().substr(0, $(this).val().indexOf('@@'));
+            $('#username').val(username);
+            $("#username").trigger("focusout");
+            
+        }
+
+    });
+
+
+    $('#mainTable').on('change', '.ctrl-status', function () {
+        var data = $('#mainTable').DataTable().row($(this).closest('tr')).data();
+        var groupid = $(this).val();
+        var userid = data.Id;
+
+        $.ajax({
+            url: '/Users/UpdateUserGroup',
+            type: 'POST',
+            dataType: 'json',
+            data: JSON.stringify({ 'GroupId': groupid, 'UserId': userid }),
+            contentType: 'application/json; charset = utf-8',
+            success: function (result) {
+                ShowDivSuccess('User Group Updated Successfully')
+            },
+            error: function (e) {
+                ShowDivError('Error while Updating Group');
+            }
+
+        })
+    });
+
+    $(document).on('click', '.delete', async function () {
+        var data = $('#mainTable').DataTable().row($(this).closest('tr')).data();
+        var url = '/Users/DeleteUser';
+
+        await DeleteConfirm(url, data.Id);
+        setTimeout(function () {
+            var mainTable = $('#mainTable').DataTable();
+            mainTable.destroy();
+            RenderDataTable();
+        }, 5000);
+
+    });
+
+    $(document).on('click', '.edit', function () {
+        debugger
+        var data = $('#mainTable').DataTable().row($(this).closest('tr')).data();
+        $('#addRowModal').modal("show");
+        $('.fw-mediumbold').text('Update');
+        $('#btnUpdate').css('display', 'block');
+        $('.password').css('display', 'none');
+        //$('#confirmPassword').css('display', 'none');
+        $('#btnSubmit').css('display', 'none');
+        $('#userId').val(data.Id);
+        $('#firstName').val(data.FirstName);
+        $('#LastName').val(data.LastName);
+        $('#email').val(data.email);
+        $('#username').val(data.username);
+        $('#userType').val(data.userType);
+        $('#userGroup').val(data.GroupName);
+        $('#userGroup').find("option:contains(" + data.GroupName + ")").prop('selected', 'selected');
+    })
+
+    $('#createUser').click(function () {
+        debugger
+        ClearFields();
+        $('#addRowModal').modal("show");
+        $('.fw-mediumbold').text('New');
+        $('#btnUpdate').css('display', 'none');
+        $('.password').css('display', 'block');
+        $('#btnSubmit').css('display', 'block');
+    })
+
+    $('#btnUpdate').click(function () {
+        CrudScript.makeAjaxRequest('Post', '/Users/UpdateUser', $("form").serialize()).then(function (data) {
+            $('#addRowModal').modal("hide");
+            var mainTable = $('#mainTable').DataTable();
+            mainTable.destroy();
+            RenderDataTable();
+            ShowDivSuccess("Updated Successfully");
+        })
+    })
+
+    function ClearFields() {
+
+        $('#userId').val();
+        $('#msg').css('display','none');
+        $('#firstName').val("");
+        $('#LastName').val('');
+        $('#username').val('');
+        $('#email').val('');
+        $('#password').val('');
+        $('#confirmpassword').val('');
+        $('#userGroup').val('');
+        $('#userType').prop('selectedIndex', 0);
+
+    }
+</script>

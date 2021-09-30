@@ -1,0 +1,385 @@
+﻿@{
+    ViewBag.Title = "Complete";
+}
+<style>
+    /*    .card {
+        margin-top: -5%;
+    }*/
+</style>
+
+
+
+@*<div class="row">
+    <div class="col">*@
+<div class="card">
+    <div class="card-header card-header-primary d-flex align-items-center">
+        <h3 class="card-title mr-auto text-white mb-0 ">Complete</h3>
+        @*<button id='add' type='button' class='btn btn-accent-color btn-md create'><i class='fas fa-plus'></i> Add Masking</button>\\*@
+    </div>
+    <div class="card-body px-0">
+        <!-- Light table -->
+        <div class="table-responsive">
+            <table class="table tblmanage display" style="width:100%">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col" hidden>ID</th>
+                        <th scope="col">ACCOUNT NUMBER</th>
+                        <th scope="col">USER NAME</th>
+                        <th scope="col">Masking ID</th>
+                        <th scope="col">NTN/FTN</th>
+                        <th scope="col">NTN/FTN STATUS</th>
+                        @*<th scope="col" colspan="5">OPERATORS</th>*@
+                        <th scope="col">Request</th>
+                        <th scope="col">Jazz</th>
+                        <th scope="col">Telenor</th>
+                        <th scope="col">Ufone</th>
+                        <th scope="col">STATUS</th>
+                        <th scope="col">Requested To</th>
+                        <th scope="col">Requested BY</th>
+                        <th scope="col">Reverted By</th>
+                        <th scope="col">Approved By</th>
+                        <th scope="col">Reason</th>
+                        <th scope="col">Current Status</th>
+                        <th scope="col">Comments</th>
+                        <th scope="col">Requested Date</th>
+                        <th scope="col">TAT Status</th>
+                        <th scope="col">Days Elapsed</th>
+                        <th scope="col" id="action">Action</th>
+                    </tr>
+                    @*<tr>
+                            <th scope="col"></th>
+
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col">Request</th>
+                            <th scope="col">Zong</th>
+                            <th scope="col">Jazz</th>
+                            <th scope="col">Telenor</th>
+                            <th scope="col">Ufone</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>*@
+                </thead>
+                <tbody class="list">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Card footer -->
+    @*<div class="card-footer py-4">
+            <nav aria-label="...">
+                <ul class="pagination justify-content-end mb-0">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">
+                            <i class="fas fa-angle-left"></i>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item active">
+                        <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">
+                            <i class="fas fa-angle-right"></i>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>*@
+    @*</div>
+        </div>*@
+</div>
+
+<!--- Detail Modal-->
+<!--<div class="modal fadeIn" id="detailmodal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content" id="detail">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="mtitles">
+                    a Masking
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="hhs">
+                <form id="TelcosComplete">
+                    <div id="modalmain">
+                        <div class="row">
+                            @Html.Hidden("Id")
+                            @Html.Hidden("CreatorType")
+                            <div class="col-lg-3">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="checkbox" id="zong" name="zong" value="off" class="custom-control-input">
+                                    <label class="custom-control-label" for="zong">Zong</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="checkbox" id="jazz" name="jazz" value="off" class="custom-control-input">
+                                    <label class="custom-control-label" for="jazz">Jazz</label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="checkbox" id="warid" name="warid" value="off" class="custom-control-input">
+                                    <label class="custom-control-label" for="warid">Warid</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-lg-3">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="checkbox" id="telenor" name="telenor" class="custom-control-input">
+                                    <label class="custom-control-label" for="telenor">Telenor</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-lg-3">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="checkbox" id="ufone" name="ufone" class="custom-control-input">
+                                    <label class="custom-control-label" for="ufone">Ufone</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+                <button type="button" class="btn btn-success save" id="btnsubmit"><i class="fa fa-refresh"></i>Save</button>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>-->
+<!--End Detail Modal-->
+<!-- Footer -->
+<footer class="footer pt-0">
+    <div class="row align-items-center justify-content-lg-between">
+        <div class="col-lg-6">
+            <div class="copyright text-center  text-lg-left  text-muted">
+                &copy; 2021 <a href="https://https://www.zong.com.pk/" class="font-weight-bold ml-1" target="_blank">CMPAK</a>
+            </div>
+        </div>
+        <div class="col-lg-6">
+        </div>
+    </div>
+</footer>
+</div>
+@section scripts
+{
+    <script src="~/Scripts/jszip-utils.min.js"></script>
+    <script src="~/Scripts/jszip.min.js"></script>
+    <script src="~/Scripts/jszip.js"></script>
+    <script src="~/Scripts/FileSaver.min.js"></script>
+    <script src="~/Scripts/ProjectScript/SenderScript.js"></script>
+    <script src="~/Scripts/ProjectScript/CrudScript.js"></script>
+    <script>
+        var initiator = '';
+        var links = [];
+        var dt = "";
+        var ss = "";
+        var isValid = true;
+
+        $(document).ready(function () {
+
+            var data = '/Sender/TelcosGetAll';
+            SenderScript.RenderDataTable(data);
+        });
+        $(document).on('click', '.history', function () {
+            debugger
+            var data = $('.tblmanage').DataTable().row($(this).closest('tr')).data();
+
+            SenderScript.LoadHistory(data.Id);
+
+        });
+        $("#btnsubmit").click(function () {
+            debugger
+            var data = $('.tblmanage').DataTable().row($('.selected').closest('tr')).data();
+            SenderScript.TelcosComplete(data);
+        });
+
+        $("input[type='checkbox']").change(function () {
+            debugger
+            if ($("#zong").is(":checked")) {
+                $("#zong").val("true");
+            }
+            else {
+                $("#zong").val("false");
+            }
+            if ($("#jazz").is(":checked")) {
+                $("#jazz").val("true");
+            }
+            else {
+                $("#jazz").val("false");
+            }
+            if ($("#warid").is(":checked")) {
+                $("#warid").val("true");
+            }
+            else {
+                $("#warid").val("false");
+            }
+            if ($("#ufone").is(":checked")) {
+                $("#ufone").val("true");
+            }
+            else {
+                $("#ufone").val("false");
+            }
+            if ($("#telenor").is(":checked")) {
+                $("#telenor").val("true");
+            }
+            else {
+                $("#telenor").val("false");
+            }
+
+        });
+
+        $('.tblmanage').on('click', 'tr', function () {
+
+            debugger
+            var ss = $(".tblmanage tr").hasClass('selected');
+            if (ss == false) {
+                $(this).removeClass('selected');
+            }
+
+            if (ss) {
+
+                var domain = window.location.origin;
+                var $row = $(this).closest("tr");
+
+                dt = $('.tblmanage').DataTable().row($(this).closest('tr')).data();
+
+                if (!links.includes(dt.Attachment)) {
+                    if (dt.Attachment != " -- ") {
+                        var filelocation = dt.Attachment;
+                        filelocation = filelocation.split(',');
+                        filelocation.forEach(function (f, i) {
+                            filelocation = f.split('Zong_Admin_Panel\\').pop();
+                            links.push(filelocation);
+                        });
+                    }
+
+                }
+                else {
+                    links.splice($.inArray(filelocation, links), 1);
+                }
+                console.log(links);
+            }
+        });
+
+
+
+
+        $(document).on('click', '.buttons-excel', function (data) {
+
+            debugger
+            if (links.length > 0) {
+
+                generateZIP();
+            }
+
+            else {
+                links = [];
+                MSM();
+                generateZIP();
+
+            }
+
+        });
+
+
+
+        function MSM() {
+            debugger
+            var domain = window.location.origin;
+            var data = $('.tblmanage').DataTable().data();
+            $.each(data, function (url, i) {
+                debugger
+                if (!links.includes(i.Attachment)) {
+                    if (i.Attachment != " -- ") {
+
+
+                        var filelocation = i.Attachment.split(',');
+                        filelocation.forEach(function (f, i) {
+                            filelocation = f.split('Zong_Admin_Panel\\').pop();
+                            links.push(filelocation);
+                            filelocation = filelocation.split(',');
+
+                        });
+                    }
+                }
+                else {
+                    links.splice($.inArray(filelocation, links), 1);
+                }
+            });
+
+        }
+
+
+
+
+        function generateZIP() {
+            debugger
+            console.log('TEST');
+            var zip = new JSZip();
+            var count = 0;
+            var zipFilename = "Attachments.zip";
+            var domain = window.location.origin;
+            var ss = "";
+
+            links.forEach(function (url, i) {
+                debugger
+                url = domain + '/' + url;
+                JSZipUtils.getBinaryContent(url, function (err, data) {
+                    debugger
+                    var filename = url.substr(38);
+                    console.log('1');
+                    if (data != null) {
+                        zip.file(filename, data, { binary: true });
+                        count++;
+
+                        if (count == links.length) {
+
+                            zip.generateAsync({ type: 'blob' }).then(function (content) {
+                                debugger
+
+                                saveAs(content, zipFilename);
+                                links = [];
+                                ShowDivSuccess("Download Successfully!!!");
+                                var ss = "/Sender/TelcosGetAll";
+                                SenderScript.RenderDataTable(ss);
+
+                            });
+                        }
+                    }
+                });
+            });
+        }
+
+
+    </script>
+}
+
+

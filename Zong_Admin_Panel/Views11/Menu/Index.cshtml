@@ -1,0 +1,194 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    table#mainTable {
+        width: 100% !important;
+    }
+
+    div#mainTable_wrapper .row {
+        width: 100% !important;
+    }
+
+    div#mainTable_length {
+        text-align: left;
+        float: left;
+    }
+
+    div#mainTable_filter {
+        float: right;
+    }
+</style>
+
+
+
+<div class="page-inner">
+    <div class="page-header" style="display:none">
+        <h4 class="page-title">Menus</h4>
+        <ul class="breadcrumbs">
+            <li class="nav-home">
+                <a href="Menu">
+                    <i class="flaticon-home"></i>
+                </a>
+            </li>
+            
+
+        </ul>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        Menu
+                        <button id='add' type='button' class='btn btn-info btn-sm create'><i class='fas fa-plus'></i> Add</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                </div>
+                <div class="card-body">
+
+                    <div class="table-responsive">
+                        <table class="table tblmanage table-striped table-bordered table-hover" id="mainTable" role="grid" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th hidden>Id</th>
+                                    <th>Menu Name</th>
+                                    <th>Menu URL</th>
+                                    <th>Controller</th>
+                                    <th>Action Method</th>
+                                    <th>Is Active</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADD MODAL -->
+    <div class="modal fadeIn" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title">
+                        <span class="fw-mediumbold">
+                            New
+                        </span>
+                        <span class="fw-light">
+                            Menu
+                        </span>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="form">
+                        <div class="row">
+                            <div class="col-md-6 pr-0">
+                                <div class="form-group form-group-default">
+                                    @Html.Hidden("menuId")
+                                    <label>Menu Name</label>
+                                    <input id="menuName" name="menuName" type="text" class="form-control" placeholder="Menu Name">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-group-default">
+                                    <label>Menu URL</label>
+                                    <input id="menuURL" name="menuURL" type="text" class="form-control" placeholder="Menu URL">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-6 pr-0">
+                                <div class="form-group form-group-default">
+                                    <label>Controller</label>
+                                    <input id="controller" name="controller" type="text" class="form-control" placeholder="Controller">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-group-default">
+                                    <label>Action</label>
+                                    <input id="action" name="action" type="text" class="form-control" placeholder="Action">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 pr-0">
+                                <div class="form-group form-group-default">
+                                    <label>Is Active</label>
+                                    <label for="true" style="display:inline-block">True</label>
+                                    <input type="radio" id="true" name="isactive" value="true" style="display:inline-block">
+                                    <label for="false" style="display:inline-block">False</label>
+                                    <input type="radio" id="false" name="isactive" value="false" style="display:inline-block">
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="submit" id="btnSubmit" class="btn btn-primary">Add</button>
+                    <button type="submit" id="btnUpdate" class="btn btn-primary" style="display:none">Update</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END ADD MODAL -->
+
+</div>
+
+<script src="~/Scripts/ProjectScript/MenuScript.js"></script>
+<script src="~/Scripts/ProjectScript/CrudScript.js"></script>
+<script>
+    $(document).ready(function () {
+        MenuScript.RenderDataTable();
+    });
+
+    $('#btnSubmit').click(function () {
+        MenuScript.SaveMenu();
+    })
+    $(document).on('click', '.edit', function () {
+        var data = $('#mainTable').DataTable().row($(this).closest('tr')).data();
+        MenuScript.FillModal(data);
+
+    });
+
+    $('#btnUpdate').click(function () {
+        MenuScript.UpdateMenu();
+    })
+
+
+    $(document).on('click', '.delete', function () {
+        var data = $('#mainTable').DataTable().row($(this).closest('tr')).data();
+
+        MenuScript.DeleteMenu(data);
+    });
+
+    $('#add').click(function () {
+        $("#form").trigger('reset');
+        $('.fw-mediumbold').text('New');
+        $('#btnUpdate').css('display', 'none');
+        $('#btnSubmit').css('display', 'block');
+        $('#addRowModal').modal("show");
+    })
+
+
+</script>

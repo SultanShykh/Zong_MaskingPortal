@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+
+<h2>Dashboard</h2>
+
+<div id="myDiv" data-value="@Request.RequestContext.HttpContext.Session["PermissionCookies"]"></div>
+
+@section scripts{
+
+    <script>
+        $(document).ready(function () {
+            var value = $("#myDiv").data('value');
+
+            localStorage.setItem("Permissions", JSON.stringify(value));
+        })
+    </script>
+}

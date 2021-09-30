@@ -1,0 +1,29 @@
+﻿.paginationbtn {
+    border: 1px solid #dadada;
+    border-radius: 50px;
+    background-color: transparent;
+    color: #777777;
+}
+
+    .paginationbtn:hover {
+        border: 1px solid #5086d1;
+        border-radius: 50px;
+        background-color: #5086d1;
+        color: white;
+        transition-duration: 0.4s;
+    }
+
+    .paginationbtn:visited {
+        border: 1px solid #777777;
+        border-radius: 50px;
+        background-color: transparent;
+        color: #777777;
+    }
+
+.disablebtn {
+    border: 1px solid #C7C7C7;
+    border-radius: 50px;
+    background-color: transparent;
+    color: #C7C7C7;
+    cursor: not-allowed;
+}

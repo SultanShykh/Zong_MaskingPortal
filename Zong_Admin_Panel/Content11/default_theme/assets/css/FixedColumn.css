@@ -1,0 +1,11 @@
+﻿.wrapper {
+    overflow-x: scroll;
+}
+
+td,th {
+    min-width: 50px;
+}
+
+.fixed {
+    position: absolute;
+}

@@ -1,0 +1,74 @@
+﻿<style>
+    div#mainTable_wrapper .row {
+        width: 100% !important;
+    }
+
+    select {
+        border-radius: 0px !important;
+    }
+
+    button#add {
+        font-size: .875rem;
+        position: relative;
+        transition: all .15s ease;
+        letter-spacing: .025em;
+        text-transform: none;
+        will-change: transform;
+        float: right;
+    }
+
+    .page-inner {
+        margin-top: -4%;
+    }
+
+    .modal-footer.border-0 {
+        margin-top: -11%;
+    }
+</style>
+
+<div class="card">
+    <div class="card-header card-header-primary d-flex align-items-center">
+        <h3 class="card-title mr-auto text-white mb-0 ">History</h3>
+    </div>
+    <div class="card-body px-0">
+        <!-- Light table -->
+        <div class="table-responsive">
+            <table class="table tblmanage display" id="mainTable" role="grid" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>UserName</th>
+                        <th>Masking</th>
+                        <th>Acivitytype</th>
+                        <th>Activity</th>
+                        <th>Datetime</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    <script src="~/Scripts/ProjectScript/HistoryScripts.js"></script>
+    <script src="~/Scripts/ProjectScript/CrudScript.js"></script>
+    <script>
+        $(document).ready(function () {
+            let Permissions = localStorage.getItem("Permissions");
+            var json = $.parseJSON(Permissions);
+            debugger
+            if (json != null) {
+                HistoryScript.RenderDataTable(json);
+            }
+            else {
+                HistoryScript.RenderDataTable();
+            }
+
+
+        });
+    </script>
+}

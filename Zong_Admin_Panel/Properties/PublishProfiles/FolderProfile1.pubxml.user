@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\Ayaz-Pc\Desktop\ZongAdminPanelPublish</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="assets/js/components/charts/chart-bars.js">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/js/components/charts/chart-bars.min.js">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/js/components/custom/form-control.js">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/js/components/custom/form-control.min.js">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/js/components/init/copy-icon.min.js">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/js/components/init/popover.js">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/js/components/init/popover.min.js">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/js/components/init/tooltip.js">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/js/components/vendor/bootstrap-datepicker.js">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/js/components/vendor/bootstrap-datepicker.min.js">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/scss/bootstrap/bootstrap-reboot.scss">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/scss/bootstrap/mixins/_alert.scss">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/scss/bootstrap/mixins/_badge.scss">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/scss/bootstrap/mixins/_box-shadow.scss">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/scss/bootstrap/_jumbotron.scss">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/scss/core/avatars/_avatar-group.scss">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/scss/core/badges/_badge-circle.scss">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/scss/core/badges/_badge-floating.scss">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/scss/core/buttons/_button-brand.scss">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/scss/custom/_mixins.scss">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/scss/custom/_utilities.scss">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/vendor/animate.css/source/attention_seekers/bounce.css">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/vendor/animate.css/source/attention_seekers/flash.css">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/vendor/animate.css/source/attention_seekers/headShake.css">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/vendor/animate.css/source/attention_seekers/jello.css">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/vendor/animate.css/source/bouncing_entrances/bounceIn.css">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/vendor/animate.css/source/bouncing_entrances/bounceInDown.css">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/vendor/animate.css/source/flippers/flipInX.css">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/vendor/animate.css/source/flippers/flipInY.css">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/vendor/animate.css/source/flippers/flipOutX.css">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/vendor/animate.css/source/flippers/flipOutY.css">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/vendor/animate.css/source/_vars.css">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="assets/vendor/chart.js/dist/Chart.min.css">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.rsp">
+      <publishTime>06/28/2021 10:29:14</publishTime>
+    </File>
+    <File Include="Content/assets/img/flags/ad.png">
+      <publishTime>06/28/2021 10:29:04</publishTime>
+    </File>
+    <File Include="Content/assets/img/flags/ae.png">
+      <publishTime>06/28/2021 10:29:04</publishTime>
+    </File>
+    <File Include="Content/assets/img/flags/af.png">
+      <publishTime>06/28/2021 10:29:04</publishTime>
+    </File>
+    <File Include="Content/assets/img/flags/ag.png">
+      <publishTime>06/28/2021 10:29:04</publishTime>
+    </File>
+    <File Include="Content/assets/img/flags/ai.png">
+      <publishTime>06/28/2021 10:29:04</publishTime>
+    </File>
+    <File Include="Content/assets/img/flags/al.png">
+      <publishTime>06/28/2021 10:29:04</publishTime>
+    </File>
+    <File Include="Content/assets/img/flags/am.png">
+      <publishTime>06/28/2021 10:29:04</publishTime>
+    </File>
+    <File Include="Content/assets/img/icon.png">
+      <publishTime>06/28/2021 10:29:04</publishTime>
+    </File>
+    <File Include="Content/assets/js/demo2.js">
+      <publishTime>06/28/2021 10:29:04</publishTime>
+    </File>
+    <File Include="Content/assets/sass/atlantis/components/_breadcrumbs.scss">
+      <publishTime>06/28/2021 10:29:04</publishTime>
+    </File>
+    <File Include="Content/assets/sass/atlantis/components/_modals.scss">
+      <publishTime>06/28/2021 10:29:04</publishTime>
+    </File>
+    <File Include="Content/assets/sass/atlantis/_opacity.scss">
+      <publishTime>06/28/2021 10:29:04</publishTime>
+    </File>
+    <File Include="Content/assets/sass/atlantis/_outlinefocus.scss">
+      <publishTime>06/28/2021 10:29:04</publishTime>
+    </File>
+    <File Include="Content/default_theme/assets/css/custom.css">
+      <publishTime>06/28/2021 10:29:04</publishTime>
+    </File>
+    <File Include="Content/default_theme/assets/css/demo.css.map">
+      <publishTime>06/28/2021 10:29:04</publishTime>
+    </File>
+    <File Include="Content/default_theme/assets/css/FixedColumn.css">
+      <publishTime>06/28/2021 10:29:04</publishTime>
+    </File>
+    <File Include="Content/default_theme/assets/vendor/bootstrap-datepicker/locales/bootstrap-datepicker.az.min.js">
+      <publishTime>06/28/2021 10:29:04</publishTime>
+    </File>
+    <File Include="Content/default_theme/assets/vendor/bootstrap-datepicker/locales/bootstrap-datepicker.bs.min.js">
+      <publishTime>06/28/2021 10:29:04</publishTime>
+    </File>
+    <File Include="Content/default_theme/assets/vendor/bootstrap/js/npm.js">
+      <publishTime>06/28/2021 10:29:04</publishTime>
+    </File>
+    <File Include="Content/default_theme/sass/demo.scss">
+      <publishTime>06/28/2021 10:29:04</publishTime>
+    </File>
+    <File Include="Content/default_theme/sass/mixins/_responsive.scss">
+      <publishTime>06/28/2021 10:29:04</publishTime>
+    </File>
+    <File Include="Content/default_theme/sass/partials/_social-brands.scss">
+      <publishTime>06/28/2021 10:29:04</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>06/28/2021 10:29:03</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>06/28/2021 10:29:05</publishTime>
+    </File>
+    <File Include="Scripts/ProjectScript/UserScript.js">
+      <publishTime>06/28/2021 10:29:05</publishTime>
+    </File>
+    <File Include="Views/Home/About.cshtml">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="Views/Home/Contact.cshtml">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>06/28/2021 10:29:06</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

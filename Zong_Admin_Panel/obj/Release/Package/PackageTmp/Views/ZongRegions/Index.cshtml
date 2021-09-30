@@ -1,0 +1,144 @@
+﻿<style>
+    div#mainTable_wrapper .row {
+        width: 100% !important;
+    }
+
+    select {
+        border-radius: 0px !important;
+    }
+
+    button#add {
+        font-size: .875rem;
+        position: relative;
+        transition: all .15s ease;
+        letter-spacing: .025em;
+        text-transform: none;
+        will-change: transform;
+        float: right;
+    }
+    .page-inner {
+        margin-top: -4%;
+    }
+    .modal-footer.border-0 {
+        margin-top: -11%;
+    }
+</style>
+
+<div class="card">
+    <div class="card-header card-header-primary d-flex align-items-center">
+        <h3 class="card-title mr-auto text-white mb-0 ">Region</h3>
+        <button id='add' type='button' class='btn btn-accent-color btn-md create'><i class='fas fa-plus'></i> Add Region</button>
+    </div>
+    <div class="card-body px-0">
+
+        <!-- Light table -->
+        <div class="table-responsive">
+            <table class="table tblmanage display" id="mainTable" role="grid" style="width:100%">
+                <thead>
+                    <tr>
+                        <th hidden>Id</th>
+                        <th>Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fadeIn" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title">
+                    <span class="fw-mediumbold">
+                        New
+                    </span>
+                    <span class="fw-light">
+                         Region
+                    </span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="form">
+                    <div class="row">
+                        @Html.Hidden("Id")
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label class="form-control-label " for="input-username">Name</label>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <input type="text" id="Name" name="Name" class="form-control" placeholder="Enter a Region ">
+                                <label class="form-control-label " id="names" style="display:none;color:red;">Please Enter a Correct Format</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+                <div class="modal-footer border-0">
+                    <button type="submit" id="btnSubmit" class="btn btn-primary">Add</button>
+                    <button type="submit" id="btnUpdate" class="btn btn-primary" style="display:none">Update</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    <script src="~/Scripts/ProjectScript/ZongRegionsScripts.js"></script>
+    <script src="~/Scripts/ProjectScript/CrudScript.js"></script>
+    <script>
+        $(document).ready(function () {
+            ZongRScripts.RenderDataTable();
+        });
+
+        $("#btnSubmit").click(function () {
+
+            ZongRScripts.ZongRSave();
+
+        });
+
+        $("#btnUpdate").click(function () {
+            ZongRScripts.ZongRUpdate();
+        });
+
+        $(document).on('click', '.edit', function () {
+            var data = $('.tblmanage').DataTable().row($(this).closest('tr')).data();
+            $('#ModalTitle').text("Update Users");
+            removevalidationmesssage();
+            ZongRScripts.FillModal(data);
+
+        });
+
+        $(document).on('click', '.delete', function () {
+            var data = $('.tblmanage').DataTable().row($(this).closest('tr')).data();
+            ZongRScripts.ZongRDelete(data);
+        });
+
+        $('#add').click(function () {
+            debugger
+            $('#addRowModal').modal("show");
+            $("#form").trigger('reset');
+            $('#ModalTitle').text("Add Users");
+            $('.fw-mediumbold').text('New');
+            $('#btnUpdate').css('display', 'none');
+            $('#btnSubmit').css('display', 'block');
+            $('#Id').val('');
+            removevalidationmesssage();
+
+        });
+
+        function removevalidationmesssage() {
+            $('#names').css('display', 'none');
+            $('#Name').css('border-color', 'lightgrey');
+        }
+    </script>
+}
